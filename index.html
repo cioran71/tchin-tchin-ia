@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Tchin Tchin IA - Sommelier du Thé</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+    .chatbox { width: 100%; max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .message { margin-bottom: 15px; }
+    .bot { color: #007B8A; font-weight: bold; }
+    .user { color: #333; font-weight: bold; }
+    button { background-color: #007B8A; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+    input, select { padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 100%; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+  <div class="chatbox">
+    <div class="message bot">Bonjour ! Je suis votre sommelier du thé IA ☕. Pour vous conseiller la boisson parfaite Tchin Tchin Express, répondez à ces quelques questions :</div>
+
+    <label for="objectif">1. Pour quelle occasion voulez-vous boire une boisson ?</label>
+    <select id="objectif">
+      <option value="détente">Me détendre</option>
+      <option value="énergie">Me dynamiser</option>
+      <option value="fraîcheur">Me rafraîchir</option>
+    </select>
+
+    <label for="saveur">2. Quelle saveur préférez-vous ?</label>
+    <select id="saveur">
+      <option value="fruitée">Fruitée 🍓</option>
+      <option value="florale">Florale 🌸</option>
+      <option value="épicée">Épicée 🌶️</option>
+    </select>
+
+    <label for="temp">3. Chaud ou froid ?</label>
+    <select id="temp">
+      <option value="chaud">Chaud 🔥</option>
+      <option value="froid">Froid ❄️</option>
+    </select>
+
+    <button onclick="recommanderBoisson()">Obtenir ma recommandation 🍵</button>
+
+    <div id="resultat" class="message bot" style="margin-top:20px;"></div>
+  </div>
+
+  <script>
+    function recommanderBoisson() {
+      const objectif = document.getElementById('objectif').value;
+      const saveur = document.getElementById('saveur').value;
+      const temp = document.getElementById('temp').value;
+
+      let recommandation = "";
+
+      if (objectif === "détente" && saveur === "florale" && temp === "chaud") {
+        recommandation = "Nous vous conseillons la boisson *Zen Fleurie* 🌼 : une infusion chaude aux notes de camomille et lavande pour une relaxation optimale.";
+      } else if (objectif === "énergie" && saveur === "épicée" && temp === "chaud") {
+        recommandation = "Essayez notre *Boost Épicé* 🔥 : un thé noir épicé au gingembre et à la cannelle pour un coup de fouet naturel.";
+      } else if (objectif === "fraîcheur" && saveur === "fruitée" && temp === "froid") {
+        recommandation = "Notre boisson *Frisson Fruité* 🍓❄️ est parfaite : infusion glacée aux fruits rouges et hibiscus pour vous désaltérer en été.";
+      } else {
+        recommandation = "Nous vous suggérons notre boisson *Tchin Tchin Surprise* 🎁 : une création équilibrée en fonction de vos envies !";
+      }
+
+      document.getElementById('resultat').innerHTML = recommandation;
+    }
+  </script>
+</body>
+</html>
